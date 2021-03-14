@@ -1,0 +1,8 @@
+<form [formGroup]="form">
+  <input type="text" placeholder="email" formControlName="email">
+  <span class="formError" *ngIf="form.get('email').touched && form.get('email').hasError('required')">Enter email</span>
+  <span class="formError" *ngIf="form.get('email').touched && form.get('email').hasError('email')">Enter valid email</span>
+  <br>
+  <input type="text" placeholder="phone" formControlName="phoneNumber">
+  <span class="formError" *ngIf="form.get('phoneNumber').touched && form.get('phoneNumber').hasError('required')">Enter phone number</span>
+</form>

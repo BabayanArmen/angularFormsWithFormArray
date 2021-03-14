@@ -1,0 +1,41 @@
+<button (click)="openMyModal()">Open My Modal</button>
+<div #myModal class="myModal">
+  <div class="content">
+    <div class="header">
+      <div class="close" (click)="closeMyModal()">&#10005;</div>
+      <div class="title">Boxes Forms</div>
+    </div>
+    <hr style="margin: 0 auto; width: 95%; border: 1px solid rgb(151, 151, 151);">
+    <div class="body">
+      <app-page1 *ngIf="pageCounter == 0" [form]="form"></app-page1>
+      <app-page2 *ngIf="pageCounter == 1" [form]="form"></app-page2>
+      <app-page3 *ngIf="pageCounter == 2" [form]="form"></app-page3>
+   </div>
+    <hr style="margin: 0 auto; width: 95%; border: 1px solid rgb(151, 151, 151);">
+    <div class="footer">
+      <button [disabled]="pageCounter == 0" (click)="pageCounter = pageCounter-1">prev</button>
+      <button
+      [disabled]="(pageCounter==0 && (form.get('firstName').invalid || form.get('lastName').invalid))
+                  ||
+                  (pageCounter==1 && (form.get('email').invalid || form.get('phoneNumber').invalid))
+                  ||
+                  pageCounter==2"
+      (click)="pageCounter = pageCounter+1">next</button>
+      <button *ngIf="pageCounter == 2" (click)="onSave()" [disabled]="form.invalid || form.value.skills.length==0">Save</button>
+    </div>
+  </div>
+</div>
+
+<div class="card" *ngIf="showResult">
+  <p>First Name: {{user.firstName}}</p>
+  <p>Last Name: {{user.lastName}}</p>
+  <p>Email: {{user.email}}</p>
+  <p>Phone: {{user.phoneNumber}}</p>
+  <p>City: {{user.city}}</p>
+  <p>Skills</p>
+  <ul>
+    <li *ngFor="let skill of user.skills">
+      {{skill}}
+    </li>
+  </ul>
+</div>

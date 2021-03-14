@@ -1,0 +1,19 @@
+<form [formGroup]="form">
+  <input type="number" placeholder="age" formControlName="age">
+  <span class="formError" *ngIf="form.get('age').touched && form.get('age').hasError('required')">Enter age</span>
+  <br>
+  <input type="text" placeholder="city" formControlName="city">
+  <span class="formError" *ngIf="form.get('city').touched && form.get('city').hasError('required')">Enter city</span>
+  <br>
+  <input #skill type="text" placeholder="skill">
+  <button (click)="onAddSkill(skill.value)">Add Skill</button>
+  <br>
+  <span>Skills</span>
+  <span class="formError" *ngIf="form.value.skills.length == 0">Add Skills</span>
+  <ul style="list-style: none;">
+    <li *ngFor="let skill of form.value.skills; let i=index">
+      {{skill}}
+      <button (click)="removeSkill(i)">remove</button>
+    </li>
+  </ul>
+</form>

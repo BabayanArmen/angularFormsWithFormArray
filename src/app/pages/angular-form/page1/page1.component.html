@@ -1,0 +1,7 @@
+<form [formGroup]="form">
+  <input type="text" placeholder="First Name" formControlName="firstName">
+  <span class="formError" *ngIf="form.get('firstName').touched && form.get('firstName').hasError('required')">Enter First Name</span>
+  <br>
+  <input type="text" placeholder="Last Name" formControlName="lastName">
+  <span class="formError" *ngIf="form.get('lastName').touched && form.get('lastName').hasError('required')">Enter Last Name</span>
+</form>

@@ -1,0 +1,10 @@
+<p>form3 works!</p>
+<input type="number" placeholder="age" [(ngModel)]="age" (change)="setAge()">
+<input type="text" placeholder="city" [(ngModel)]="city" (change)="setCity()">
+<input type="text" placeholder="skill" [(ngModel)]="skill" (change)="addSkill()">
+<ul>
+  <li *ngFor="let skill of user.skills">
+    {{skill}}
+    <button (click)="onRemoveSkill(skill)">Remove Skill</button>
+  </li>
+</ul>
